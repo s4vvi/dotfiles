@@ -1,0 +1,52 @@
+add_newline = false
+
+[aws]
+disabled = true
+
+[character]
+format = "❯❯ "
+success_symbol = "❯❯(bold green) "
+error_symbol = "❯❯(bold red) "
+
+[directory]
+style='blue bold'
+format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+[git_status]
+disabled = true
+
+[hostname]
+disabled = true
+
+[package]
+disabled = true
+
+[time]
+disabled = false
+style = "cyan bold"
+time_format = "%Y-%m-%d %H:%M"
+utc_time_offset = "local"
+
+[username]
+style_user = "green bold"
+format = "\uf303 [$user]($style) "
+disabled = false
+show_always = true
+
+[git_branch]
+symbol = "💻 "
+truncation_length = 20
+truncation_symbol = "…"
+style="bold purple"
+
+[rust]
+format = "via [⚙️ $version](bold red)"
+
+[python]
+pyenv_version_name = true
+
+[nodejs]
+format = "via [🤖 $version](bold green) "

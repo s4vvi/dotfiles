@@ -1,0 +1,47 @@
+[
+    {
+        "name": "YouTube",
+        "bin": "/usr/bin/brave",
+        "args": ["https://youtube.com"]
+    },
+    {
+        "name": "HTB - Home",
+        "bin": "/usr/bin/brave",
+        "args": ["https://hackthebox.com"]
+    },
+    {
+        "name": "HTB - Labs",
+        "bin": "/usr/bin/brave",
+        "args": ["https://app.hackthebox.com/home"]
+    },
+    {
+        "name": "GitHub",
+        "bin": "/usr/bin/brave",
+        "args": ["https://github.com"]
+    },
+    {
+        "name": "Email",
+        "bin": "/usr/bin/brave",
+        "args": ["https://mail.proton.me/u/0/inbox"]
+    },
+    {
+        "name": "AVD - Mobile",
+        "bin": "/opt/android-sdk/emulator/emulator",
+        "args": ["-avd", "mobile"]
+    },
+    {
+        "name": "AVD - Mobile (Writeable)",
+        "bin": "/opt/android-sdk/emulator/emulator",
+        "args": ["-avd", "mobile", "-writable-system"]
+    },
+    {
+        "name": "AVD - Mobile Playstore",
+        "bin": "/opt/android-sdk/emulator/emulator",
+        "args": ["-avd", "mobile_playstore"]
+    },
+    {
+        "name": "Logout",
+        "bin": "/usr/bin/i3-msg",
+        "args": ["exit"]
+    }
+]

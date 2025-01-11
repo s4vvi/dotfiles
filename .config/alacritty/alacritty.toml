@@ -1,0 +1,50 @@
+[bell]
+duration = 0
+
+[colors.bright]
+black = "#888888"
+blue = "#0FA4FF"
+cyan = "#64DBFF"
+green = "#67FCBD"
+magenta = "#C39BD3"
+red = "#F04E83"
+white = "#E1E1E1"
+yellow = "#EAF345"
+
+[colors.normal]
+black = "#888888"
+blue = "#0FA4FF"
+cyan = "#64DBFF"
+green = "#67FCBD"
+magenta = "#C39BD3"
+red = "#F04E83"
+white = "#E1E1E1"
+yellow = "#EAF345"
+
+[colors.primary]
+background = "#1B2631"
+foreground = "#E1E1E1"
+
+[font]
+size = 8 
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.offset]
+x = 0
+y = 0
+
+[terminal.shell]
+program = "/usr/bin/tmux"
+
+[window]
+dynamic_padding = true
+opacity = 0.8
+
+[window.padding]
+x = 0
+y = 0
+
+[terminal]

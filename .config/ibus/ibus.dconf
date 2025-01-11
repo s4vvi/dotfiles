@@ -1,0 +1,17 @@
+[general]
+embed-preedit-text=true
+engines-order=['xkb:lv::lav', 'anthy']
+preload-engines=['xkb:lv::lav', 'anthy']
+use-system-keyboard-layout=false
+version='1.5.28'
+
+[general/hotkey]
+triggers=['<Alt>space']
+
+[panel]
+lookup-table-orientation=0
+show=0
+show-icon-on-systray=false
+use-custom-font=false
+use-custom-icon=false
+use-custom-theme=false
