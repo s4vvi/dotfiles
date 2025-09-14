@@ -58,6 +58,19 @@ alias ports="netstat -tulpn 2>/dev/null"
 alias gwd="pwd | tr -d '\n' | xsc"
 # VIM
 alias vim="nvim"
+# Sig kill a single process
+alias sigkill="sigterm_kill"
+
+function sigterm_kill() {
+    local slug=$1
+    local pid=$(ps aux | grep $slug | grep -v grep | awk '{print $2}')
+
+    if [[ $(echo $pid | wc -l) -gt 1 ]]; then
+        echo "Too many processes that match"
+    fi
+
+    kill -9 $pid
+}
 
 # Threatfox search
 threatfox() {
