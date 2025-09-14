@@ -51,7 +51,8 @@ alias xud="xclip -o -selection c | ~/.cargo/bin/urld | xclip -selection c"
 # Format JSON 
 alias xjq="xclip -o -selection c | jq | xclip -selection c" 
 # Prune tmux sessions
-alias tmuxprune="for id in $(tmux list-sessions | grep -v 'attached' | cut -d ':' -f 1); do tmux kill-session -t $id; done"
+alias tmuxprune="for id in \$(tmux list-sessions | grep -v 'attached' | cut -d ':' -f 1); do tmux kill-session -t \$id; done"
+alias tmuxa="tmux has-session && tmux attach-session || tmux new-session"
 # Netstat
 alias ports="netstat -tulpn 2>/dev/null"
 # Get w/ dir

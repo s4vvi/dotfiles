@@ -1,27 +1,32 @@
 [
     {
+        "name": "Sandbox",
+        "bin": "/usr/sbin/alacritty",
+        "args": ["-e", "/bin/bash", "-c", "docker exec -it sandbox zsh -c tmux\\ has-session\\ \\&\\&\\ tmux\\ attach-session\\ \\|\\|\\ tmux\\ new-session"]
+    },
+    {
         "name": "YouTube",
-        "bin": "/usr/bin/brave",
+        "bin": "/usr/bin/firefox",
         "args": ["https://youtube.com"]
     },
     {
-        "name": "HTB - Home",
-        "bin": "/usr/bin/brave",
+        "name": "HackTheBox - Home",
+        "bin": "/usr/bin/firefox",
         "args": ["https://hackthebox.com"]
     },
     {
-        "name": "HTB - Labs",
-        "bin": "/usr/bin/brave",
+        "name": "HackTheBox - Labs",
+        "bin": "/usr/bin/firefox",
         "args": ["https://app.hackthebox.com/home"]
     },
     {
         "name": "GitHub",
-        "bin": "/usr/bin/brave",
+        "bin": "/usr/bin/firefox",
         "args": ["https://github.com"]
     },
     {
         "name": "Email",
-        "bin": "/usr/bin/brave",
+        "bin": "/usr/bin/firefox",
         "args": ["https://mail.proton.me/u/0/inbox"]
     },
     {
@@ -43,5 +48,25 @@
         "name": "Logout",
         "bin": "/usr/bin/i3-msg",
         "args": ["exit"]
+    },
+    {
+        "name": "Performance",
+        "bin": "/usr/bin/asusctl",
+        "args": ["profile", "-P", "Performance"]
+    },
+    {
+        "name": "Balanced",
+        "bin": "/usr/bin/asusctl",
+        "args": ["profile", "-P", "Balanced"]
+    },
+    {
+        "name": "Quiet",
+        "bin": "/usr/bin/asusctl",
+        "args": ["profile", "-P", "Quiet"]
+    },
+    {
+        "name": "Alacritty (TMUX-less)",
+        "bin": "/usr/bin/alacritty",
+        "args": ["-e", "/usr/bin/zsh"]
     }
 ]
