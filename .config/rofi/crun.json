@@ -2,7 +2,7 @@
     {
         "name": "Sandbox",
         "bin": "/usr/sbin/alacritty",
-        "args": ["-e", "/bin/bash", "-c", "docker exec -it sandbox zsh -c tmux\\ has-session\\ \\&\\&\\ tmux\\ attach-session\\ \\|\\|\\ tmux\\ new-session"]
+        "args": ["-e", "/bin/bash", "-c", "docker exec -it sandbox zsh -c tmux\\ has-session\\ \\&\\&\\ tmux\\ attach-session\\ \\|\\|\\ tmux\\ -2"]
     },
     {
         "name": "YouTube",
