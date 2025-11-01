@@ -65,7 +65,7 @@ alias sigkill="sigterm_kill"
 alias gptn="gpt -n"
 alias gptl="gpt --list-threads"
 alias gptt="gpt --set-thread"
-alias gpth="gpt --show-history"
+alias gpth="gpt --show-history 2>/dev/null"
 alias gptc="gpt --clear-history"
 
 function gpt_prune() {
