@@ -68,6 +68,12 @@ alias gptt="gpt --set-thread"
 alias gpth="gpt --show-history"
 alias gptc="gpt --clear-history"
 
+function gpt_prune() {
+    for thread in $(gpt --list-threads | grep '\- cmd_' | cut -d ' ' -f 2); do
+        gpt --delete-thread $thread
+    done
+}
+
 function sigterm_kill() {
     local slug=$1
     local pid=$(ps aux | grep $slug | grep -v grep | awk '{print $2}')
