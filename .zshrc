@@ -61,6 +61,12 @@ alias gwd="pwd | tr -d '\n' | xsc"
 alias vim="nvim"
 # Sig kill a single process
 alias sigkill="sigterm_kill"
+# GPT
+alias gptn="gpt -n"
+alias gptl="gpt --list-threads"
+alias gptt="gpt --set-thread"
+alias gpth="gpt --show-history"
+alias gptc="gpt --clear-history"
 
 function sigterm_kill() {
     local slug=$1
