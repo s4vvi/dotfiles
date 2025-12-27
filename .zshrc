@@ -1,3 +1,8 @@
+# START X11 on tty1
+if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
+    exec startx
+fi
+
 # Custom ZSHRC
 # =====================
 # ENVIRONMENT VARIABLES
@@ -52,18 +57,18 @@ alias xud="xclip -o -selection c | ~/.cargo/bin/urld | xclip -selection c"
 alias xjq="xclip -o -selection c | jq | xclip -selection c" 
 # Prune tmux sessions
 alias tmuxprune="for id in $(tmux list-sessions | grep -v 'attached' | cut -d ':' -f 1); do tmux kill-session -t $id; done"
-alias tmuxa="tmux has-session && tmux attach-session || tmux new-session"
 # Netstat
 alias ports="netstat -tulpn 2>/dev/null"
 # Get w/ dir
 alias gwd="pwd | tr -d '\n' | xsc"
 # VIM
 alias vim="nvim"
-# Upper & lower
+
+# stats
+alias stats="sort | uniq -c | sort -n"
 alias u2l="tr '[:upper:]' '[:lower:]'"
 alias l2u="tr '[:lower:]' '[:upper:]'"
-# Sig kill a single process
-alias sigkill="sigterm_kill"
+
 # GPT
 alias gptn="gpt -n"
 alias gptl="gpt --list-threads"
@@ -77,15 +82,12 @@ function gpt_prune() {
     done
 }
 
-function sigterm_kill() {
-    local slug=$1
-    local pid=$(ps aux | grep $slug | grep -v grep | awk '{print $2}')
-
-    if [[ $(echo $pid | wc -l) -gt 1 ]]; then
-        echo "Too many processes that match"
+function jqseek() {
+    if [[ $1 == "" ]]; then
+        echo "jqseek <key>";
+        return
     fi
-
-    kill -9 $pid
+    jq -r ".. | select(type == \"object\") | .$1? // empty"
 }
 
 # Threatfox search
@@ -95,6 +97,17 @@ threatfox() {
         return
     fi
     curl -sX POST https://threatfox-api.abuse.ch/api/v1/ -d "{\"query\": \"search_ioc\", \"search_term\": \"$1\"}" | jq 
+}
+
+function sigterm_kill() {
+    local slug=$1
+    local pid=$(ps aux | grep $slug | grep -v grep | awk '{print $2}')
+
+    if [[ $(echo $pid | wc -l) -gt 1 ]]; then
+        echo "Too many processes that match"
+    fi
+
+    kill -9 $pid
 }
 
 # My ip
@@ -116,8 +129,9 @@ jara() {
         return
     fi
 
-    for rules in $(find /work/projects/YARA/ -type f -name "*.yar"); do 
-        yara -r $rules $1 2>/dev/null;
+    IFS=$'\n'
+    for rules in $(find /work/projects/YARA/db -type f \( -name "*.yar" -o -name "*.yara" \)); do 
+        yara -r $rules $1 -s 2>&1 | grep -vE '^(error: rule |warning: rule )';
     done
 }
 
