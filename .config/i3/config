@@ -30,7 +30,7 @@ bindsym $mod+Shift+q kill
 # start rofi
 bindsym $mod+d exec --no-startup-id rofi -show drun -font 'Source Code Pro 10'
 bindsym $mod+Shift+d exec --no-startup-id rofi -show run -font 'Source Code Pro 10'
-bindsym $mod+s exec --no-startup-id rofi -modi crun -show crun -font 'Source Code Pro 10'
+bindsym $mod+s exec --no-startup-id rofi -modi crun -show crun -plugin-path /usr/lib/rofi -font 'Source Code Pro 10'
 
 #
 # Change focus
@@ -148,10 +148,10 @@ bindsym $mod+r mode "resize"
 #
 # Custom binds
 #
-bindsym $mod+Shift+s exec /usr/bin/flameshot gui
+bindsym $mod+Shift+s exec /usr/local/bin/flameshot gui
 bindsym $mod+Shift+a exec /usr/local/bin/shrots --config ~/.config/shrots/shrots.json
-bindsym $mod+Shift+p exec /usr/bin/betterlockscreen -l blur
-bindsym $mod+c exec --no-startup-id /usr/bin/rofi -modi "clipboard:greenclip print" -show clipboard
+bindsym $mod+Shift+p exec /usr/bin/i3lock -i ~/.local/share/wallpapers/plur.png -e -t
+bindsym $mod+g exec --no-startup-id /usr/bin/rofi -modi "clipboard:greenclip print" -show clipboard
 
 # Conversion binds
 # Base64 Encode
@@ -168,20 +168,19 @@ bindsym $mod+u exec "xclip -o -selection c | ~/.cargo/bin/urld | xclip -selectio
 notify-send -t 500 'I3 Encodings:' 'URL Decoded' >/dev/null 2>&1" 
 
 
-client.focused		#64DBFF #64DBFF #222222 #64DBFF #64DBFF
-client.focused_inactive	#0FA4FF #0FA4FF #F6F5F4 #0FA4FF #0FA4FF
-client.unfocused	#0FA4FF #0FA4FF #F6F5F4 #0FA4FF #0FA4FF
+client.focused		#C48CED #C48CED #222222 #C48CED #C48CED
+client.focused_inactive	#61538D #61538D #F6F5F4 #61538D #61538D
+client.unfocused	#61538D #61538D #F6F5F4 #61538D #61538D
 client.urgent		#F04E83 #F04E83 #222222 #F04E83 #F04E83
 
-exec --no-startup-id prime-offload
-exec --no-startup-id autorandr --default DEFAULT
 
-exec --no-startup-id greenclip daemon > /dev/null
+exec --no-startup-id gentoo-pipewire-launcher &
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
-exec --no-startup-id nm-applet
 
+exec_always --no-startup-id flameshot
+exec_always --no-startup-id greenclip daemon > /dev/null
 exec_always --no-startup-id redshift -P -O 2900
-exec_always --no-startup-id feh --bg-fill ~/.local/share/wallpapers/stars.png 
+exec_always --no-startup-id feh --bg-tile ~/.local/share/wallpapers/purpel.png 
 
 default_border pixel 1
 
@@ -193,13 +192,17 @@ bar {
         background #15161900
         statusline #f1f1f1
 
-        focused_workspace  #000000 #64DBFF #222222
+        focused_workspace  #000000 #C48CED #222222
         active_workspace   #ffffff #333333
         inactive_workspace #888888 #222222
         urgent_workspace   #ffffff #F04E83
     }
 }
 
-# Android studio
+# Emulators 
 for_window [title="^Android Emulator - mobile:[0-9]+$"] floating enable, border normal, move position mouse
 for_window [title="^Android Emulator - mobile_playstore:[0-9]+$"] floating enable, border normal, move position mouse
+
+# Discord
+for_window [title="Discord"] border pixel 1
+for_window [title="Burp Suite Professional v2025.12.5"] border pixel 1

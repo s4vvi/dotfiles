@@ -1,5 +1,6 @@
 # START X11 on tty1
 if [[ -z $DISPLAY ]] && [[ $(tty) == /dev/tty1 ]]; then
+    echo && $HOME/.local/bin/logo
     exec startx
 fi
 
@@ -34,10 +35,10 @@ alias ip='ip --color=auto'
 alias diff='diff --color=always'
 # Replacement for "ls"
 # Using `eza` for tab completion
-alias ls="exa -l -g --icons --git -s type"
+alias ls="eza -l -g --icons --git -s type"
 # Using `eza` fro tab completion
 # Replacement for "tree"
-alias tree="exa -1 --icons --tree --git-ignore -s type"
+alias tree="eza -1 --icons --tree --git-ignore -s type"
 # Alias for copy / clipboard
 alias xsc="xclip -selection c"
 alias xoc="xclip -o -selection c"
@@ -75,6 +76,9 @@ alias gptl="gpt --list-threads"
 alias gptt="gpt --set-thread"
 alias gpth="gpt --show-history 2>/dev/null"
 alias gptc="gpt --clear-history"
+
+alias cpustat="watch grep MHz /proc/cpuinfo"
+alias gpustat="watch nvidia-smi"
 
 function gpt_prune() {
     for thread in $(gpt --list-threads | grep '\- cmd_' | cut -d ' ' -f 2); do
@@ -141,7 +145,6 @@ jara() {
 # Import plugins
 source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
 # Clear suggestions on paste
@@ -159,10 +162,12 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 eval "$(starship init zsh)"
 
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/tools/bin"
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 # Android SDK
-export ANDROID_HOME=/opt/android-sdk
+export ANDROID_HOME=/tools/android-sdk
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools

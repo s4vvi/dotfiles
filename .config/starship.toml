@@ -31,8 +31,8 @@ time_format = "%Y-%m-%d %H:%M"
 utc_time_offset = "local"
 
 [username]
-style_user = "green bold"
-format = "\uf303 [$user]($style) "
+style_user = "purple bold"
+format = "\uf30d [$user]($style) "
 disabled = false
 show_always = true
 
